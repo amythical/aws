@@ -97,7 +97,7 @@ Open POSTMAN, the API gateway URL viz https://abcde12345.execute-api.ap-south-1.
 {
     "message": "Unauthorized"
 }
-- Conclusion : Users not logged in with Cognito cannot acces this URL
+- Conclusion : Success! Users not logged in with Cognito cannot access this URL
 
 Now lets see if Cognito Users can access the URL
 - Open POSTMAN, Copy a JWT Token from your app and add it in POSTMAN Headers [New to JWT Tokens ?](Link here)
