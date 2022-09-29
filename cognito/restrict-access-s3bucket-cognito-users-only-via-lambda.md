@@ -1,5 +1,5 @@
 # Use case
-Give a s3 buckets access only to users signed in through our Cognito User pool. 
+Give a s3 bucket access only to users signed in through our Cognito User pool. 
 
 # Why is this not so straightforward to begin with?
  - When a user logs in using a Cognito User Pool, the user has no IAM Role assigned
