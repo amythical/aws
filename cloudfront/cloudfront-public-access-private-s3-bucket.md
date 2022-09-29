@@ -7,7 +7,7 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
 
 # Implementation Details
 ## The S3 Bucket
-- Create a bucket in S3, block all public access
+- Create a bucket in S3, called 'public-assets' block all public access
 - Upload an image to the bucket say image.png
 - From the buckets Objects Tab -> image.png, copy the Object url
 - If you paste it in your browser you should get a 
@@ -19,7 +19,7 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
 <HostId>SomeMoreRand0mNumbers&Characters</HostId>
 </Error>
 ```
-- So we now have a private S3 Bucket
+- So we now have a S3 Bucket with private access such that no one can access it using the S3 Object urls
 
 ## The Cloudfront Distribution
 - Create a Cloudfront Distribution
@@ -83,8 +83,8 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
 - Save changes (to policy)
 
 ## Check the image URL using cloudfront
-    -  Cloudfront->Distributions->Your distribution->General, copy the distribution name
-    - In your browser try https://your-distribution-linkname.cloudfront.net/image.png
+    -  Cloudfront->Distributions->Your distribution->General, copy the distribution name (which is a url like https://somecharactersandnumbers.cloudfront.net)
+    - In your browser try the url we got above https://somecharactersandnumbers.cloudfront.net/image.png
     - Yay! we now see the image using cloudfront!!!
 
 ## Oops getting Access Denied error using Cloudfront URL?
@@ -112,7 +112,7 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
     - AWS -> Cloudfront -> Distribution, select checkbox from dashboard and Enable
     
 ## Check the image URL using cloudfront
-- Cloudfront->Distributions->Your distribution->General, copy the distribution name
-    - In your browser try https://your-distribution-linkname.cloudfront.net/image.png
+- Cloudfront->Distributions->Your distribution->General, copy the distribution name (url like https://somecharactersandnumbers.cloudfront.net)
+    - In your browser try https://somecharactersandnumbers.cloudfront.net/image.png
     - Yay! we now see the image using cloudfront!!!
 
