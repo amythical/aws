@@ -88,7 +88,7 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
     - Yay! we now see the image using cloudfront!!!
 
 ## Oops getting Access Denied error using Cloudfront URL?
-    - Did you still get 
+- Did you still get 
     ```
     <Error>
     <Code>AccessDenied</Code>
@@ -97,6 +97,7 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
     <HostId>SomeMoreRand0mNumbers&Characters</HostId>
     </Error>
     ```
+
     - So there is a configuration issues ... we get an access denied that means S3 is not letting Cloudfront access the image, the connecting links are the S3 Policy and Cloudfronts Origin Access
     - Check if the S3 Policy has given access to our cloudfront distribution by confirming the bucketname and the Cloudfront ARN name 
     - Lets also confirm the Origin Access we configured
@@ -111,7 +112,7 @@ Users can only access images from a S3 bucket using a cloudfront url. Any attemp
     - AWS -> Cloudfront -> Distribution, select checkbox from dashboard and Enable
     
 ## Check the image URL using cloudfront
-    -  Cloudfront->Distributions->Your distribution->General, copy the distribution name
+- Cloudfront->Distributions->Your distribution->General, copy the distribution name
     - In your browser try https://your-distribution-linkname.cloudfront.net/image.png
     - Yay! we now see the image using cloudfront!!!
 
