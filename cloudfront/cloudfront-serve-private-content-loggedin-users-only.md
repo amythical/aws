@@ -337,7 +337,7 @@ let options = {
  ### Using curl for sending Cookies
  - We can use CURL from the terminal to check whats happening
 ```
-curl -v  -H "origin: https://cms-uat.dailycuttting.com" -H "cookie: CloudFront-Key-Pair-Id=ABCDEFG;CloudFront-Policy=abcd567890;CloudFront-Signature=abcd123456” https://cdn.example.com/protected/wallpaper.png
+curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABCDEFG;CloudFront-Policy=abcd567890;CloudFront-Signature=abcd123456” https://cdn.example.com/protected/wallpaper.png
 ```
 - This returns the headers and error/success codes
 
