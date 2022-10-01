@@ -380,7 +380,7 @@ curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABC
    - https://cdn.example.com/protected/wallpaper.png works in the browser when used in the address bar
 
   ### What about <img/> tags?
-  - So even though https://cdn.example.com/protected/wallpaper.png worked in the browser, <img src='https://cdn.example.com/protected/wallpaper.png'> gave a 403
+  - So even though https://cdn.example.com/protected/wallpaper.png worked in the browser, ```<img src='https://cdn.example.com/protected/wallpaper.png'> ``` gave a 403
   - If you see the headers in Chrome dev tools, with the img tag the CloudFront headers are not passed
   - I then modifed the img tage to include crossOrigin attributute, trying this in Dev tools I could see the CloudFront headers being passed with the request
   ```
