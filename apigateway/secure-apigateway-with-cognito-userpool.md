@@ -1,6 +1,9 @@
 # Use case
 Secure a API Gateway URL so that only users logged in using Cognito User Pool can access it. Accessing the API Gateway URL without Cognito creds should give an error.
 
+# Last Update 
+Oct 22 - Adding this as AWS keeps updating, this date helps to know if the solution is outdated
+
 # Approach
 API Gateway URL has an authorisation section where Cognito Pool can be configured as an Authorisation Source.
 The Cognito token needs to be passed to the API Gateway while calling it.
