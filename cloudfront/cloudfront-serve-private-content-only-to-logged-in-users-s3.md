@@ -420,6 +420,39 @@ curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABC
 - With use-credentials the img tag could now load the protected images, YAY!!! finally after a day and a half I could get this working ...
 
 
+## Added Security on S3
+- Only users logged into the app can view the image but a logged in user can also copy the image url and because they have the cookies, they can paste the image url in the browser and view it outside the app
+- To prevent this such that the image can be only opened from inside your webapp, add the following to the S3 policy
+- S3 -> Bucket -> Permissions -> Bucket Policy -> edit
+```
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "AllowCloudFrontServicePrincipal",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "cloudfront.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::protected-s3-bucket-name/*",
+            "Condition": {
+                "StringEquals": {
+                    "AWS:SourceArn": "arn:aws:cloudfront::1234567890 :distribution/ABCDEFGHIJ"
+                },
+                "StringLike": {
+                    "aws:Referer": "https://example.com/*"
+                }
+            }
+        }
+    ]
+}
+```
+- Save Policy 
+- Disable and Enable the CloudFront Distribution (CloufFront -> Dashboard->Select distribution and Enable/Disable button)
+- Accessing the image directly from the browser should now give an Access Denied message
+
 ## Cleaning up Cookies on Logout
  - The Signed Cookies are not deleted when a user logs out so we will need to add code to delete them on the logout function
  - Also if you have a 'remember-me' feature you will need to create the cookies on an auto-login if they expire in a short time
