@@ -1,6 +1,5 @@
 # Use Case
-Access a file in a folder in a private S3 bucket without
-
+You have a private S3 bucket with images. You want to share the images with a few users or want someone view the images with a link but you do not want to expose the bucket publicly over CDN.
 # Approach
 With the access credentials for private S3 bucket, we request a presigned url with an expiry time, the url with myriad parameters gives us access to the image for the specified expiry time 
 
