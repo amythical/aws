@@ -87,6 +87,8 @@ https://your-private-bucket-name.region.amazonaws.com/private/image.jpg?X-Amz-Al
     - CloudFront -> your distribution -> Origins tab -> Select the S3 Bucket added as an Origin and select Access Control -> Create Control Setting
     - Give it a name, description, Signing Bheaviour select Do not sign requests
     - Save changes
+
+# Try #3
 - CloudFront -> Distributions -> Your Distribution -> disable and enable just to be safe
 - Now trying the S3 presigned url by replacing the buckets domain with the CDNs domain we see the image! YAY!!!
 
