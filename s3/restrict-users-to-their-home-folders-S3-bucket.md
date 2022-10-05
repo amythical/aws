@@ -20,7 +20,8 @@ So here is the approach using Cognito and IAM Role.
 
 # Implementation
 ## Creating a private S3 bucket
-[See a previous post to create a private S3 bucket](https://github.com/amythical/aws/blob/main/cloudfront/cloudfront-serve-content-from-private-s3-bucket.md)
+- Follow all the isntructions from [this post](https://github.com/amythical/aws/blob/main/s3/pre-signed-url-private-S3-bucket.md) to create a private S3 Bucket, configure CloudFront behaviour path pattern
+
 ## Creating a User Pool
 [Post coming soon TBD]()
 ## Create an Identity Pool
