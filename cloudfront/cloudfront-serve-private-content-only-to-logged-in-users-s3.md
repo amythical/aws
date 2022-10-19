@@ -456,8 +456,11 @@ curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABC
 ```
 
 - Save Policy 
+- CloudFront -> Distributions -> My Distribution -> Behaviours -> protected-> Cache key and origin requests -> Select UserAgentRefererHeaders 
+- We need to select UserAgentRefererHeaders so that our asset is only loaded when requested from our domain
 - Disable and Enable the CloudFront Distribution (CloudFront -> Dashboard->Select distribution and Enable/Disable button)
 - Accessing the image directly from the browser should now give an Access Denied message
+
 
 ## Cleaning up Cookies on Logout
  - The Signed Cookies are not deleted when a user logs out so we will need to add code to delete them on the logout function
@@ -486,7 +489,7 @@ I tried using an audio tag in ReactJs to fetch an audio file, but I got all sort
 * CloudFront -> Distributions -> Behaviours -> protected ->
   * Cache key and origin requests -> Cache policy and origin request policy (recommended)
     * Cache policy -> Select protected-assets-cache-policy
-    * Origin request policy - optional -> Select CORS-S3Origin
+    * Origin request policy - optional -> Select UserAgentRefererHeaders
     * Response headers policy - optional -> Select Cors policy for example.com
     * Save Changes
 * Cloudfront -> Distributions -> Disable/Enable
