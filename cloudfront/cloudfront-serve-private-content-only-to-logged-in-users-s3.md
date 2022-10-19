@@ -395,25 +395,29 @@ curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABC
   - Save Changes
 - S3, Buckets go to our protected bucket
   - Cross-origin resource sharing (CORS)
-  
-  ```
-  [
-      {
-          "AllowedHeaders": [],
-          "AllowedMethods": [
-              "GET"
-          ],
-          "AllowedOrigins": [
-              "https://*.example.com"
-          ],
-          "ExposeHeaders": []
-      }
-  ]
-  ```
 
-- After logging in to the app I had a page with 
+
+```
+  [
+    {
+        "AllowedHeaders": [],
+        "AllowedMethods": [
+            "GET",
+            "HEAD"
+        ],
+        "AllowedOrigins": [
+            "https://*.example.com"
+        ],
+        "ExposeHeaders": [
+            "ETag"
+        ]
+    }
+]
 ```
 
+- After logging in to the app I had a page with 
+
+```
 <img src='https://cdn.example.com/public/image.png'> <br/>
 <img src='https://cdn.example.com/protected/wallpaper.png' crossOrigin="use-credentials">
 ```
@@ -424,6 +428,7 @@ curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABC
 - Only users logged into the app can view the image but a logged in user can also copy the image url and because they have the cookies, they can paste the image url in the browser and view it outside the app
 - To prevent this such that the image can be only opened from inside your webapp, add the following to the S3 policy
 - S3 -> Bucket -> Permissions -> Bucket Policy -> edit
+
 ```
 {
     "Version": "2008-10-17",
@@ -449,10 +454,41 @@ curl -v  -H "origin: https://example.com" -H "cookie: CloudFront-Key-Pair-Id=ABC
     ]
 }
 ```
+
 - Save Policy 
-- Disable and Enable the CloudFront Distribution (CloufFront -> Dashboard->Select distribution and Enable/Disable button)
+- Disable and Enable the CloudFront Distribution (CloudFront -> Dashboard->Select distribution and Enable/Disable button)
 - Accessing the image directly from the browser should now give an Access Denied message
 
 ## Cleaning up Cookies on Logout
  - The Signed Cookies are not deleted when a user logs out so we will need to add code to delete them on the logout function
  - Also if you have a 'remember-me' feature you will need to create the cookies on an auto-login if they expire in a short time
+
+## Update for Audio content
+I tried using an audio tag in ReactJs to fetch an audio file, but I got all sorts of errors ranging from 403 to 206. here is what worked for me, additional settings to CloudFront cache and response headers
+* CloudFront -> Policies ->Cache -> Create cache policy
+  * Give it a name eg protected-assets-cache-policy
+  * Headers - None
+  * Querystrings - All
+  * Cookies - All
+  * Gzip and Brotli enabled (by default)
+  * Save changes
+* CloudFront -> Policies -> Response Headers -> Create Response Header policy
+    * Name eg Cors policy for example.com
+    * Configure Cors ON
+    * Access-Control-Allow-Origin -> Customize add *.example.com
+    * Rest can be default settings
+    * Save Changes
+* CloudFront -> Distributions -> Behaviours -> protected ->
+  * Cache key and origin requests -> Cache policy and origin request policy (recommended)
+    * Cache policy -> Select protected-assets-cache-policy
+    * Origin request policy - optional -> Select CORS-S3Origin
+    * Response headers policy - optional -> Select Cors policy for example.com
+    * Save Changes
+* Cloudfront -> Distributions -> Disable/Enable
+
+The Audio tag needs to be like
+```
+<audio src="https://cdn.example.com/protected/audio/myaudio.mp3" id="myPlayer" crossOrigin="use-credentials"/>
+```
+Happy listening to your mp3 saved on S3 and served via Cloudfront!
+
