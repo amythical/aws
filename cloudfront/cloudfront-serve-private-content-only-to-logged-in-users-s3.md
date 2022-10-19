@@ -476,6 +476,11 @@ I tried using an audio tag in ReactJs to fetch an audio file, but I got all sort
     * Name eg Cors policy for example.com
     * Configure Cors ON
     * Access-Control-Allow-Origin -> Customize add *.example.com
+    * Access-Control-Allow-Headers -> Customize -> Add Headers - type in the input box 'Access-Control-Allow-Methods' (without the quotes)
+    * Access-Control-Allow-Methods -> Customize -> Select GET, HEAD, OPTIONS (Customise this if needed)
+    * Access-Control-Expose-Headers None
+    * Access-Control-Allow-Credentials CHECKED
+    * Origin override CHECKED
     * Rest can be default settings
     * Save Changes
 * CloudFront -> Distributions -> Behaviours -> protected ->
