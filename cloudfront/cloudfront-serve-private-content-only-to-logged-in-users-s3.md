@@ -500,3 +500,35 @@ The Audio tag needs to be like
 ```
 Happy listening to your mp3 saved on S3 and served via Cloudfront!
 
+## Update for CloudFront caching
+I observed that Cloudfront wasn't caching my content 'x-cache: Miss from cloudfront in Response Headers'
+The following changes helped, I had to undo the referer changes in S3 for this to work
+- CloudFront -> Distributions -> My Distribution -> Behaviour -> protected
+  - Origin request policy -optional -> CORS-S3Origin
+  - Response headers policy -optional -> CORS-With-Preflight
+- S3 -> myprotectedbucket -> Permissions 
+```
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "AllowCloudFrontServicePrincipal",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "cloudfront.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::protected-s3-bucket-name/*",
+            "Condition": {
+                "StringEquals": {
+                    "AWS:SourceArn": "arn:aws:cloudfront::1234567890 :distribution/ABCDEFGHIJ"
+                }
+            }
+        }
+    ]
+}
+```
+- CloudFront -> Distributions -> My Distribution -> Disable/Enable
+- Now accessing the asset twice should show the second request getting a 'x-cache Hit from Cloudfront' in the Response Header.
+- I will have to figure the heards needed to enable this with the referer setting in S3
