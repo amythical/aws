@@ -23,9 +23,11 @@ I dont use any cli frameworks for lambda, so i need the aws console to write and
 ## Adding the sharp binary as a layer to Lambda
 Before creating a layer ensure your zip file has the following structure 
 * nodejs[folder]
- * package-lock.json
- * node_modules[FOLDER]
+  * package-lock.json
+  * node_modules[FOLDER]
+
 Then create a zip file with this structure with any name you like, I just named mine as sharpnode18x.zip
+
 *18x in the zip file stands for the node version just to identify the sharp binary later with multiple node versions, replace 18x with your node version used in the nvm use command*
 
 AWS Console -> lambda -> layers ->create a new custom lambda layer
