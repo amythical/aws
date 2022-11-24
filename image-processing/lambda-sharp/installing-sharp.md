@@ -35,7 +35,7 @@ Give it a name eg 'sharpnode18x', choose the proper runtime eg Node 18.x
 Upload the zip file created earlier 'sharpnode18x.zip'
 You should now see a layer in the lambda layers called sharpnode18x
 
-Layers help reuse the binaries/functions across lambda functions so this should prove helpful if we want to use sharp in any otehr lambda functions.
+> Layers help reuse the binaries/functions across lambda functions so this should prove helpful if we want to use sharp in any otehr lambda functions.
 
 ## Using the created Layer in our lambda function
 On the lambda function page, you should see a layers icon along with API-Gateway and destination, click on the layers icon.
