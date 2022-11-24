@@ -1,4 +1,4 @@
-# In a AWS Lambda function, we read an image from a S3 Bucket, crop it and then save it to another S3 bucket
+# In a AWS Lambda function, we read an image from a S3 Bucket, resize it and then save it to another S3 bucket
 
 ## Pre-requisites
 * Assuming Lambda runtime is 18.x
