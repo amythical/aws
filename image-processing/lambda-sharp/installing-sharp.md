@@ -6,9 +6,9 @@ We also assume that you choose x64 and not arm as a architecture for running you
 
 If you choose arm look at installing arch arm binaries for sharp using the *npm install --arch=arm command* 
 
-IMPORTANT - Before you start sharp installation 
-- Make sure to sure the node version compatible with AWS Lambda, check the Lambda config settings to find the supported node version*
-- Use nvm to manage node versions, much easier and nvm install+use the node version tahts used by the lambda or there will be compatibility issues with the layer 
+IMPORTANT - Before you start the sharp installation 
+- Make sure the node version is compatible with AWS Lambda, check the Lambda config settings in the AWS Console to find the node version used for lambda runtime*
+- Use nvm to manage node versions, much easier and nvm install+use the node version that is used by the lambda or else there will be compatibility issues with the layer 
 - To change Lambda Runtime from AWS Lambda console - AWS Console -> Lambda -> function name -> Code Tab -> Scroll down to Runtime settings
 
 `
