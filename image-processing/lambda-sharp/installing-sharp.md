@@ -22,9 +22,9 @@ I dont use any cli frameworks for lambda, so i need the aws console to write and
 
 ## Adding the sharp binary as a layer to Lambda
 Before creating a layer ensure your zip file has the following structure 
-- nodejs[folder]
--- package-lock.json
--- node_modules[FOLDER]
+* nodejs[folder]
+ * package-lock.json
+ * node_modules[FOLDER]
 Then create a zip file with this structure with any name you like, I just named mine as sharpnode18x.zip
 *18x in the zip file stands for the node version just to identify the sharp binary later with multiple node versions, replace 18x with your node version used in the nvm use command*
 
@@ -44,6 +44,7 @@ In our lambda index.mjs file
 `
 import sharp from '/opt/nodejs/node_modules/sharp/lib/index.js';
 `
+
 Notes -
 - Figure out the absolute import path by looking into the package folder in node_modules 
 - I got an index.mjs file in lambda, thats a ES6 file, as I used node 18x as runtime, a require will work in an index.js file 
