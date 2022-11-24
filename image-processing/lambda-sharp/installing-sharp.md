@@ -3,7 +3,8 @@
 ## npm install binary
 Sharp binaries are installed as per the OS, so doing a npm install on your machine say window/mac will get the window/mac binary for sharp and that wont work on a lambda run on linux
 We also assume that you choose x64 and not arm as a architecture for running your lamba
-if you choose arm look at installing arch arm binaries for sharp using the *npm install --arch=arm command* 
+
+If you choose arm look at installing arch arm binaries for sharp using the *npm install --arch=arm command* 
 
 IMPORTANT - Before you start sharp installation 
 - Make sure to sure the node version compatible with AWS Lambda, check the Lambda config settings to find the supported node version*
