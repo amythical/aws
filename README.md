@@ -7,7 +7,7 @@ Quick links to published notes -
 
 ## API Gateway
 - [Lambda Proxy Vs Lambda Integration](https://github.com/amythical/aws/blob/9f0af2f3a3b3006b18249c48e3b5bd3d1ad5dd65/apigateway/lambda-proxy-Vs-lambda-integration.md)
-- [Secure a API Gateway URL so that only users logged in using Cognito User Pool can access it. Accessing the API Gateway URL without Cognito creds should give an error] (https://github.com/amythical/aws/blob/9f0af2f3a3b3006b18249c48e3b5bd3d1ad5dd65/apigateway/secure-apigateway-with-cognito-userpool.md)
+- [Secure a API Gateway URL so that only users logged in using Cognito User Pool can access it. Accessing the API Gateway URL without Cognito creds should give an error](https://github.com/amythical/aws/blob/9f0af2f3a3b3006b18249c48e3b5bd3d1ad5dd65/apigateway/secure-apigateway-with-cognito-userpool.md)
 
 ## S3
 - [You have a private S3 bucket with images. You want to share the images with a few users or want someone view the images with a link but you do not want to expose the bucket publicly over CDN](https://github.com/amythical/aws/blob/0358331d94c9591b9938b3e7917eddffe0d54f86/s3/pre-signed-url-private-S3-bucket.md)
