@@ -95,7 +95,7 @@ https://your-private-bucket-name.region.amazonaws.com/private/image.jpg?X-Amz-Al
 
 # What about Caching with the custom policy?
 - As long as the query string parameters remain the same the CDN cache will be hit
-- We have a problem as with a new expiry time the signature changes each time a S3 Presigned Url is generated
+- We have a problem as with every api request to generate the signature a new S3 Presigned Url is generated with different uery string parameters so the browser not CloudFront caches this and a new request is made everytime nullyfying the CloudFront cache with the same image
 - [Here is a solution to cache presigned urls](https://github.com/amythical/aws/blob/667c0e715caacbc87308164a43ae0520ca686c43/s3/caching-presigned-urls.md)
 
 # Conclusion
