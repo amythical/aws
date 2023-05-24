@@ -100,5 +100,5 @@ https://your-private-bucket-name.region.amazonaws.com/private/image.jpg?X-Amz-Al
 
 # Conclusion
  - We managed to hide the S3 Bucket name, use the CDN domain and get a presigned url for a private S3 Bucket image
- - Cache optimisation yet to be addressed
+ - We have a solution for cache optimisation by using the same presigned url
 
