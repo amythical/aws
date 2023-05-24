@@ -10,7 +10,7 @@ Give a s3 bucket access only to users signed in through our Cognito User pool.
 - User pool -> Identity Pool -> IAM Role with access to S3 Bucket
 - Request with Authorization header to Lambda -> extract Authorization header -> get JWT Token -> get CognitoIdentity using JWT Token -> get Credentials for this Identity -> use these credentials to access S3 Bucket
 
-# Approach 2 ( using User pool Groups )
+# Approach 2 ( using User pool Groups ) - TO BE DETAILED
 - IAM Role with access to S3 Bucket
 - User pool, User Pool Groups -> assign IAM Role
 - Request with Authorization header to Lambda -> extract Authorization header -> get JWT Token -> get roles from request using cognito:roles -> use STS to assume this role in Lambda and access the S3 Bucket
