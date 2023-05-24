@@ -5,7 +5,7 @@ User A should not be able to access user Bs folder in the same S3 bucket.
 # Approach
 One approach is simple but is based on IAM users [on the aws blogs](https://aws.amazon.com/blogs/security/writing-iam-policies-grant-access-to-user-specific-folders-in-an-amazon-s3-bucket/).
 
-In webapps this is not practical creating an IAM user for each signup, so I use Cognito/IAM Roles for such access.
+In webapps this is not practical creating an IAM user for each signup, I used Cognito/IAM Roles for such access.
 So here is the approach using Cognito and IAM Role.
 
  - Create a S3 bucket with private access
