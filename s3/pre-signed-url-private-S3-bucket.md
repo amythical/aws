@@ -96,7 +96,7 @@ https://your-private-bucket-name.region.amazonaws.com/private/image.jpg?X-Amz-Al
 # What about Caching with the custom policy?
 - As long as the query string parameters remain the same the CDN cache will be hit
 - We have a problem as with a new expiry time the signature changes each time a S3 Presigned Url is generated
-- We will address this in a separate post [Link To be added]()
+- [Here is a solution to cache presigned urls](https://github.com/amythical/aws/blob/667c0e715caacbc87308164a43ae0520ca686c43/s3/caching-presigned-urls.md)
 
 # Conclusion
  - We managed to hide the S3 Bucket name, use the CDN domain and get a presigned url for a private S3 Bucket image
