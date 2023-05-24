@@ -12,7 +12,7 @@ CloudFront has a path pattern feature where different origins(and hence S3 bucke
 After the user logs into the app, create signed Cookies for CloudFront. These cookies will need to be signed using a Signer (public + private key pair). On CloudFront upload the public key and modify the protected resources path which need a check on the signed cookies. Requests without signed cookies should be denied access when they try and view the protected content.
 
 # Note on signed urls
-Signed urls are also available from S3 which could leverage the Authorization header and provide permissions as per IAM Roles. If we use S3 signed urls we could pass them through the CloudFront CDN domain and [cache presigned urls](https://github.com/amythical/aws/edit/main/cloudfront/cloudfront-serve-private-content-only-to-logged-in-users-s3.md#:~:text=caching-,%2D,-presigned%2Durls.md) , but this will have to be done for each asset.
+Signed urls are also available from S3 which could leverage the Authorization header and provide permissions as per IAM Roles. If we use S3 signed urls we could pass them through the CloudFront CDN domain and [cache presigned urls](https://github.com/amythical/aws/blob/1498d027c7260563b7166f9d78cfe6194ee2626d/s3/caching-presigned-urls.md) , but this will have to be done for each asset.
 A 'bulk' method for all assets is using CloudFronts signed cookies.
 CloudFront introduced signed urls and signed cookies to block/permit access to private/protected content. We will use signed cookies to ensure we leverage the CDN cache while accessing the images from the S3 bucket.
 
