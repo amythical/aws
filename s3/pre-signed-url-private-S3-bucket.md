@@ -62,13 +62,14 @@ https://your-private-bucket-name.region.amazonaws.com/private/image.jpg?X-Amz-Al
 - TLDR Yes we can, read on ...
 - I read another article on [Advanced Web](https://advancedweb.hu/how-to-use-s3-signed-urls-with-cloudfront/), but it did gave me Access Denied issues, but it was good enough to point me in the right direction and look for a solution
 - So we need to use the CDN and using the behaviours path pattern match it to the S3 origin with the required query string parameters 
-- How do we fwd query string, CloudFront -> Policy->Custom Policies -> Create cahe policy -> New Cache control policy 
+- How do we forward the query string from CloudFront to S3?
+    CloudFront -> Policy->Custom Policies -> Create cahe policy -> New Cache control policy 
     - Give it a Name and Description
     - Headers None, Query strings All
     - Cookies None
     - Save
 - We need to use this cache policy in our distribution
-    - CloudFront -> Bheaviours -> private pattern
+    - CloudFront -> Behaviours -> private pattern
     - Select the cache policy and in the select options find the Csutom Cache Control Policy we just created
     - Save changes
 
